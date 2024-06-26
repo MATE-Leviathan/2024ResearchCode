@@ -101,6 +101,8 @@ def zlock():
     barWanted = float(request.args.get("bar"))
     barCurrent = round(baroSensor.pressure(ms5837.UNITS_psi)*100)/100
     barChange = barWanted-barCurrent
+    mr2.angle = int(barChange*30)+90
+    ml5.angle = int(barChange*30)+90
     print(barChange)
     return({"note":"zlock"})
 @app.route('/testThruster')
